@@ -11,44 +11,85 @@ function getElement(selection) {
     }
 }
 
-// Constructor Function
-function Counter(element, initialValue) {
-    this.counter = element;
-    this.value = initialValue;
-    this.resetBtn = element.querySelector(".reset");
-    this.increaseBtn = element.querySelector(".increase");
-    this.decreaseBtn = element.querySelector(".decrease");
-    this.valueDOM = element.querySelector(".value");
-    this.valueDOM.textContent = this.value;
+// // ***** Constructor Function ***** //
+// function Counter(element, initialValue) {
+//     this.counter = element;
+//     this.value = initialValue;
+//     this.resetBtn = element.querySelector(".reset");
+//     this.increaseBtn = element.querySelector(".increase");
+//     this.decreaseBtn = element.querySelector(".decrease");
+//     this.valueDOM = element.querySelector(".value");
+//     this.valueDOM.textContent = this.value;
 
-    // bind this to all functions
-    this.increase = this.increase.bind(this);
-    this.decrease = this.decrease.bind(this);
-    this.reset = this.reset.bind(this);
+//     // bind this to all functions
+//     this.increase = this.increase.bind(this);
+//     this.decrease = this.decrease.bind(this);
+//     this.reset = this.reset.bind(this);
 
-    // buttons functionality
-    this.increaseBtn.addEventListener("click", this.increase);
-    this.decreaseBtn.addEventListener("click", this.decrease);
-    this.resetBtn.addEventListener("click", this.reset);
+//     // buttons functionality
+//     this.increaseBtn.addEventListener("click", this.increase);
+//     this.decreaseBtn.addEventListener("click", this.decrease);
+//     this.resetBtn.addEventListener("click", this.reset);
+// }
+
+// // increase value
+// Counter.prototype.increase = function () {
+//     this.value++;
+//     this.valueDOM.textContent = this.value;
+// };
+
+// // decrease value
+// Counter.prototype.decrease = function () {
+//     this.value--;
+//     this.valueDOM.textContent = this.value;
+// };
+
+// // reset value
+// Counter.prototype.reset = function () {
+//     this.value = 0;
+//     this.valueDOM.textContent = this.value;
+// };
+
+// ***** Class setup ***** //
+
+class Counter {
+    constructor(element, initialValue) {
+        this.counter = element;
+        this.value = initialValue;
+        this.resetBtn = element.querySelector(".reset");
+        this.increaseBtn = element.querySelector(".increase");
+        this.decreaseBtn = element.querySelector(".decrease");
+        this.valueDOM = element.querySelector(".value");
+        this.valueDOM.textContent = this.value;
+
+        // bind this to all functions
+        this.increase = this.increase.bind(this);
+        this.decrease = this.decrease.bind(this);
+        this.reset = this.reset.bind(this);
+
+        // buttons functionality
+        this.increaseBtn.addEventListener("click", this.increase);
+        this.decreaseBtn.addEventListener("click", this.decrease);
+        this.resetBtn.addEventListener("click", this.reset);
+    }
+    // increase value
+    increase() {
+        this.value++;
+        this.valueDOM.textContent = this.value;
+    }
+
+    // decrease value
+    decrease() {
+        this.value--;
+        this.valueDOM.textContent = this.value;
+    }
+
+    // reset value
+    reset() {
+        this.value = 0;
+        this.valueDOM.textContent = this.value;
+    }
 }
-
-// increase value
-Counter.prototype.increase = function () {
-    this.value++;
-    this.valueDOM.textContent = this.value;
-};
-
-// decrease value
-Counter.prototype.decrease = function () {
-    this.value--;
-    this.valueDOM.textContent = this.value;
-};
-
-// reset value
-Counter.prototype.reset = function () {
-    this.value = 0;
-    this.valueDOM.textContent = this.value;
-};
 
 const firstCounter = new Counter(getElement(".first-counter"), 0);
 const secondCounter = new Counter(getElement(".second-counter"), 100);
